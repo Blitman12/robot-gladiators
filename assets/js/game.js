@@ -72,7 +72,7 @@ var startGame = function () {
             var pickedEnemyObject = enemyInfo[i];
             pickedEnemyObject.health = randomNumber(40, 60);
             fight(pickedEnemyObject);
-            if (i < enemyNames.length && playerInfo.health > 0) {
+            if (i < enemyInfo.length && playerInfo.health > 0) {
                 var storeConfirm = window.confirm("The battle is over, would you like to visit the store before the next fight?");
                 if (storeConfirm) {
                     shop();
@@ -135,10 +135,22 @@ var shop = function () {
 var randomNumber = function (min, max) {
     var value = Math.floor(Math.random() * (max - min + 1) + min);
     return value;
-}
+};
+
+
+
+var getPlayerName = function() {
+  var name = "";
+
+  while (name === "" || name === null) {
+    name = prompt("What is your robot's name?");
+  }
+  console.log("Your robot's name is " + name);
+  return name;
+};
 
 var playerInfo = {
-    name: window.prompt("What is your robot's name?"),
+    name: getPlayerName(),
     health: 100,
     attack: 10,
     money: 10,
